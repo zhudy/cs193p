@@ -17,16 +17,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var flipCountLabel: UILabel!
     
-    @IBAction func touchCard(_ sender: UIButton) {
-        print("agh, 棒棒糖！")
-        flipCount += 1
-        flipCard(withEmoji: "🍭", on: sender)
-    }
+    @IBOutlet var cardButtons: [UIButton]!
     
-    @IBAction func touchSecondCard(_ sender: UIButton) {
-        print("agh, 南瓜！")
+    var emojiChoices: Array<String> = ["🍭","🎃","🐶","🏀"]
+    @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-        flipCard(withEmoji: "🎃", on: sender)
+        let cardNumber = cardButtons.firstIndex(of: sender)!
+        print("cardNumber = \(cardNumber)")
+        
+        flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
     }
     
     func flipCard(withEmoji emoji: String, on button: UIButton){
