@@ -39,7 +39,25 @@ class Concentration
             let card = Card()
             cards += [card, card]
         }
+        //todo: Shuffle the cards
+        shuffle()
     }
     
-    //todo: Shuffle the cards
+    func shuffle() {
+        for _ in 0...20{ //shuffle 20 time
+            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
+            let card = cards[cards.count - 1 - randomIndex]
+            cards[cards.count - 1 - randomIndex] = cards[randomIndex]
+            cards[randomIndex] = card
+        }
+    }
+    
+    func replay(){
+        //turn all cards to unmatched
+        for i in 0..<cards.count {
+            cards[i].isMatched = false
+            cards[i].isFaceUp = false
+        }
+        shuffle()
+    }
 }
