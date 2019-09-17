@@ -44,11 +44,12 @@ class Concentration
     }
     
     func shuffle() {
-        for _ in 0...20{ //shuffle 20 time
-            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
-            let card = cards[cards.count - 1 - randomIndex]
-            cards[cards.count - 1 - randomIndex] = cards[randomIndex]
-            cards[randomIndex] = card
+        for _ in 0...40{ //shuffle 20 time
+            let randomIndex_a = Int(arc4random_uniform(UInt32(cards.count)))
+            let randomIndex_b = Int(arc4random_uniform(UInt32(cards.count)))
+            let card = cards[randomIndex_a]
+            cards[randomIndex_a] = cards[randomIndex_b]
+            cards[randomIndex_b] = card
         }
     }
     
